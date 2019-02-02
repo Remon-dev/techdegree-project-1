@@ -3,53 +3,146 @@ Treehouse Techdegree:
 FSJS project 1 - A Random Quote Generator
 ******************************************/
 
-// Study guide for this project - https://drive.google.com/file/d/1s5grutGuQFwJcQP8bFwEI69Q8FCkGdDk/view?usp=sharing
-
-
-/*** 
-  Create the array of quote objects and name it `quotes`.
-  Add at least five quote objects to the `quotes` array.
-  Give each quote object a `quote` and `source` property.
-
-  Recommended: 
-    - Add at least one `year` and/or `citation` property to at least one 
-      quote object.
-***/
-
-
-
-
 /***
-  Create the `getRandomQuote` function to:
-   - generate a random number 
-   - use the random number to `return` a random quote object from the 
-     `quotes` array.
+*************
+ Going for  EXTRA CREDIT
+
+ Remon Samuel Tewodros 
+*************
 ***/
 
+// Quotes
+var quotes = [
 
+  {
+    quote: "The first step is you have to say that you can.",
+    source: 'Will Smith',
+    year: '',
+    citation: '',
+    tags: 'Inspirational'
+  },
 
+  {
+    quote: "Always remember that you are absolutely unique. Just like everyone else.",
+    source: 'Margaret Mead',
+    year: '1979',
+    citation: '1,001 logical laws',
+    tags: 'Humor'
+  },
 
-/***
-  Create the `printQuote` function to: 
-   - call the `getRandomQuote` function and assign it to a variable.
-   - use the properties of the quote object stored in the variable to 
-     create your HTML string.
-   - use conditionals to make sure the optional properties exist before 
-     they are added to the HTML string.
-   - set the `innerHTML` of the `quote-box` div to the HTML string. 
-***/
+  {
+    quote: "Happiness is having a large, loving, caring, close-knit family in another city.",
+    source: 'George Burns',
+    year: '',
+    citation: '',
+    tags: 'Humor'
+  },
 
+  {
+    quote: "No man has a good enough memory to be a successful liar.",
+    source: 'Abraham Lincoln',
+    year: '',
+    citation: '',
+    tags: 'Truth'
+  },
 
+  {
+    quote: "A man who says “I have learned enough and will learn no further” should be considered as knowing nothing at all.",
+    source: 'Haile Selassie',
+    year: '1963',
+    citation: 'The gospel of the lion of judah',
+    tags: 'Truth'
+  },
 
+  {
+    quote: "The best way to teach your kids about taxes is by eating 30 percent of their ice cream.",
+    source: 'Bill Murray',
+    year: '2014',
+    citation: 'Twitter',
+    tags: 'Humor'
+  },
 
-/***
-  When the "Show another quote" button is clicked, the event listener 
-  below will be triggered, and it will call, or "invoke", the `printQuote` 
-  function. So do not make any changes to the line of code below this 
-  comment.
-***/
+  {
+    quote: "Go to Heaven for the climate, Hell for the company",
+    source: 'Mark Twain',
+    year: '',
+    citation: '',
+    tags: 'Humor'
+  },
 
+  {
+    quote: "Sorry for the mean, awful, accurate things I said.",
+    source: ' T-shirts from Amazon',
+    year: '2015',
+    citation: 'Amazon.com',
+    tags: 'Humor/Fashion'
+  },
+  {
+    quote: "Whoever said that money can't buy happiness, simply didn't know where to go shopping.",
+    source: 'The Letters of Gertrude Stein and Carl Van Vechten',
+    year: '1986',
+    citation: 'Columbia University Press',
+    tags: 'Truth'
+  }
+]
+
+// Generate random quoute from the array 'quotes'.
+function getRandomQuote() {
+  var randomQuote = Math.floor(Math.random() * quotes.length);
+  return randomQuote;
+}
+
+// Auto-refresh the quote after 9 secondes
+var autoRefreshQuote = window.setInterval(printQuote, 9000);
+
+// Print the quote to the page
+function printQuote() {
+  var randomQuote = getRandomQuote();
+
+  // Conditional statement to test if the quote has an identified citation, year or source. 
+  if (quotes[randomQuote].citation === '' || quotes[randomQuote].citation === null) {
+    quotes[randomQuote].citation = ' citation is unkonwn';
+  }
+  if (quotes[randomQuote].year === '' || quotes[randomQuote].year === null) {
+    quotes[randomQuote].year = ' year is unkonwn';
+  }
+  if (quotes[randomQuote].source === '' || quotes[randomQuote].source === null) {
+    quotes[randomQuote].source = ' Anonymous';
+  }
+
+  //get the IDs from the HTML and print random quotes to the page unsing .innerHTML
+  document.getElementById('quote').innerHTML = quotes[randomQuote].quote;
+  document.getElementById('source').innerHTML = quotes[randomQuote].source;
+  document.getElementById('citation').innerHTML = quotes[randomQuote].citation;
+  document.getElementById('year').innerHTML = quotes[randomQuote].year;
+  document.getElementById('tags').innerHTML = quotes[randomQuote].tags;
+
+  //change the background color randomly
+  function randomBackgroundColor() {
+    var red = Math.floor(Math.random() * 256);
+    var green = Math.floor(Math.random() * 256);
+    var blue = Math.floor(Math.random() * 256);
+    var bgColor = 'rgb(' + red + ',' + green + ',' + blue + ')';
+
+    //change the background color of loadQuote randomly
+    document.getElementById('loadQuote').style.background = bgColor;
+
+    //change the background color 
+    document.body.style.background = bgColor;
+  }
+  randomBackgroundColor();
+
+}
+
+// display another quote when this button is clicked
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
+/*******
+Outside Resource Links
 
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
+https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval
+
+https://www.w3resource.com/javascript-exercises/javascript-math-exercise-40.php
+
+https://teamtreehouse.com/library/javascript-loops-arrays-and-objects/simplify-repetitive-tasks-with-loops/the-refactor-challenge-part-2
+********/
