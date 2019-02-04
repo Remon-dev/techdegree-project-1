@@ -93,7 +93,7 @@ function getRandomQuote() {
 }
 
 // Auto-refresh the quote after 9 secondes
-var autoRefreshQuote = window.setInterval(printQuote, 90000);
+var autoRefreshQuote = window.setInterval(printQuote, 9000);
 
 // Print the quote to the page
 function printQuote() {
