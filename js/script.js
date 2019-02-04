@@ -7,7 +7,7 @@ FSJS project 1 - A Random Quote Generator
 *************
  Going for  EXTRA CREDIT
 
- Remon Samuel Tewodros 
+ Remon Tewodros 
 *************
 ***/
 
