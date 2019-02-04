@@ -52,6 +52,12 @@ body {
   margin-right: 4em;
 }
 
+.source span {
+  font-size: 1rem;
+
+}
+
+
 .source:before {
   content: "—";
 }
@@ -61,7 +67,7 @@ body {
 }
 
 .citation:before {
-  content: ", ";
+  content: "";
   font-style: normal;
 }
 
@@ -71,7 +77,7 @@ body {
 }
 
 .tags:before {
-  content: "";
+  content: " ";
   font-style: normal;
   line-height: 2.3;
 }

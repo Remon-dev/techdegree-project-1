@@ -93,7 +93,7 @@ function getRandomQuote() {
 }
 
 // Auto-refresh the quote after 9 secondes
-var autoRefreshQuote = window.setInterval(printQuote, 9000);
+var autoRefreshQuote = window.setInterval(printQuote, 90000);
 
 // Print the quote to the page
 function printQuote() {
@@ -110,12 +110,28 @@ function printQuote() {
     quotes[randomQuote].source = ' Anonymous';
   }
 
+  //previos version
+  //get the IDs from the HTML and print random quotes to the page unsing .innerHTML
+  // document.getElementById('quote').innerHTML = quotes[randomQuote].quote;
+  // document.getElementById('source').innerHTML = quotes[randomQuote].source;
+  // document.getElementById('citation').innerHTML = quotes[randomQuote].citation;
+  // document.getElementById('year').innerHTML = quotes[randomQuote].year;
+  // document.getElementById('tags').innerHTML = quotes[randomQuote].tags;
+
+
+  //This is the new version I got help form Treehouse slack community.
+
   //get the IDs from the HTML and print random quotes to the page unsing .innerHTML
   document.getElementById('quote').innerHTML = quotes[randomQuote].quote;
-  document.getElementById('source').innerHTML = quotes[randomQuote].source;
-  document.getElementById('citation').innerHTML = quotes[randomQuote].citation;
-  document.getElementById('year').innerHTML = quotes[randomQuote].year;
-  document.getElementById('tags').innerHTML = quotes[randomQuote].tags;
+  var secondPHtml = quotes[randomQuote].source +
+    '<br>' + '<span class="citation" id="citation">' +
+    quotes[randomQuote].citation +
+    '</span><span class="year" id="year">' +
+    quotes[randomQuote].year + '<br>' +
+    '</span><span class="tags" id="tags">' +
+    quotes[randomQuote].tags + '</span>';
+  document.getElementById('source').innerHTML = secondPHtml;
+
 
   //change the background color randomly
   function randomBackgroundColor() {
